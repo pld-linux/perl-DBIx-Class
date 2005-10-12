@@ -6,7 +6,7 @@
 %define	pdir	DBIx
 %define	pnam	Class
 Summary:	DBIx::Class - Extensible and flexible object <-> relational mapper
-#Summary(pl):	
+Summary(pl):	DBIx::Class - rozszerzalne i elastyczne wi±zanie obiektów <-> relacji
 Name:		perl-DBIx-Class
 Version:	0.03001
 Release:	1
@@ -30,19 +30,27 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-DBIx::Class is a sql to oop mapper, inspired by the Class::DBI framework, 
-and meant to support compability with it, while restructuring the 
-insides, and making it possible to support some new features like 
-self-joins, distinct, group bys and more.
+DBIx::Class is a SQL to OOP mapper, inspired by the Class::DBI
+framework, and meant to support compability with it, while
+restructuring the insides, and making it possible to support some new
+features like self-joins, distinct, group bys and more.
 
 It's currently considered EXPERIMENTAL - bring this near a production
-database at your own risk! The API is *not* fixed yet, although most of
-the primitives should be good for the future and any API changes will be
-posted to the mailing list before they're committed.
+database at your own risk! The API is *not* fixed yet, although most
+of the primitives should be good for the future and any API changes
+will be posted to the mailing list before they're committed.
 
+%description -l pl
+DBIx::Class to klasa odwzorowuj±ca SQL na OOP, zainspirowana
+szkieletem Class::DBI, maj±ca obs³ugiwaæ kompatibilno¶æ z nim, ale
+restrukturyzuj±c wnêtrzno¶ci i umo¿liwiaj±c obs³ugê niektórych nowych
+mo¿liwo¶ci, takie jak "self-join", "distinct", "group by" i inne.
 
-# %description -l pl
-# TODO
+Ten modu³ jest aktualnie uwa¿any za EKSPERYMENTALNY - zbli¿aæ go do
+baz produkcyjnych mo¿na tylko na w³asne ryzyko! API nie zosta³o
+jeszcze ustalone, choæ wiêkszo¶æ prymitywów powinna byæ dobra na
+przysz³o¶æ i ka¿da zmiana API jest wysy³ana na listê dyskusyjn± przed
+zatwierdzeniem.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
