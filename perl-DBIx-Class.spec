@@ -8,13 +8,13 @@
 Summary:	DBIx::Class - Extensible and flexible object <-> relational mapper
 Summary(pl):	DBIx::Class - rozszerzalne i elastyczne wi±zanie obiektów <-> relacji
 Name:		perl-DBIx-Class
-Version:	0.03001
+Version:	0.03002
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	d3d55fec74910e4c7e3ee4913d012b74
+# Source0-md5:	f5afa0ca3e281ef79d29432f8401d8f0
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
