@@ -8,26 +8,35 @@
 Summary:	DBIx::Class - Extensible and flexible object <-> relational mapper
 Summary(pl):	DBIx::Class - rozszerzalne i elastyczne wi±zanie obiektów <-> relacji
 Name:		perl-DBIx-Class
-Version:	0.03003
+Version:	0.06000
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	16ba0948042b9501a5853903f2cc600c
+# Source0-md5:	63fec9467b0c7b23d3e9e7e74d89419f
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
-BuildRequires:	perl-DBD-SQLite >= 1.08
-BuildRequires:	perl-Data-Page
+BuildRequires:	perl-Carp-Clan
+BuildRequires:	perl-Class-C3 >= 0.11
+BuildRequires:	perl-Class-Data-Accessor >= 0.01
+BuildRequires:	perl-Class-Inspector
+BuildRequires:	perl-Data-Page >= 2.00
+BuildRequires:	perl-Data-UUID
+BuildRequires:	perl-DBD-SQLite >= 1.11
+BuildRequires:	perl-DBI >= 1.40
 BuildRequires:	perl-Module-Find
 BuildRequires:	perl-SQL-Abstract >= 1.2
 BuildRequires:	perl-SQL-Abstract-Limit >= 0.11
-BuildRequires:	perl-Tie-IxHash
-BuildRequires:	perl(UNIVERSAL::require)
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# Only last of them is available in PLD. And if it was we would still
+# need only one of Data::UUID, Data::Uniqid, APR::UUID or UUID at any
+# time to get full functionality
+%define 	_noautoreq	'perl(Data::Uniqid)' 'perl(UUID)' 'perl(APR::UUID)'
 
 %description
 DBIx::Class is a SQL to OOP mapper, inspired by the Class::DBI
