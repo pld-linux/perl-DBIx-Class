@@ -8,13 +8,13 @@
 Summary:	DBIx::Class - Extensible and flexible object <-> relational mapper
 Summary(pl):	DBIx::Class - rozszerzalne i elastyczne wi±zanie obiektów <-> relacji
 Name:		perl-DBIx-Class
-Version:	0.06000
+Version:	0.06003
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	63fec9467b0c7b23d3e9e7e74d89419f
+# Source0-md5:	83b04b4cfafb9e3ae6c50d8b289ea52e
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
@@ -61,6 +61,14 @@ jeszcze ustalone, choæ wiêkszo¶æ prymitywów powinna byæ dobra na
 przysz³o¶æ i ka¿da zmiana API jest wysy³ana na listê dyskusyjn± przed
 zatwierdzeniem.
 
+%package -n perl-SQL-Translator-DBIx-Class
+Summary:	DBIx::Class schema parser and file producer
+Group:		Development/Languages/Perl
+
+%description -n perl-SQL-Translator-DBIx-Class
+This package contains SQL::Translator (sqlfairy) parser for
+DBIx::Class::Schema objects and producer for DBIx::Class files
+
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
 
@@ -76,6 +84,7 @@ zatwierdzeniem.
 rm -rf $RPM_BUILD_ROOT
 
 ./Build install
+install -d $RPM_BUILD_ROOT%{perl_vendorlib}/DBIx/Class/Schema
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -85,4 +94,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc Changes README
 %{perl_vendorlib}/DBIx/*.pm
 %{perl_vendorlib}/DBIx/Class
+%dir %{perl_vendorlib}/DBIx/Class/Schema
 %{_mandir}/man3/*
+
+%files -n perl-SQL-Translator-DBIx-Class
+%defattr(644,root,root,755)
+%{perl_vendorlib}/SQL/Translator/Parser/*
+%{perl_vendorlib}/SQL/Translator/Producer/*
