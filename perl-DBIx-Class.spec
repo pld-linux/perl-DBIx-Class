@@ -63,11 +63,16 @@ zatwierdzeniem.
 
 %package -n perl-SQL-Translator-DBIx-Class
 Summary:	DBIx::Class schema parser and file producer
+Summary(pl):	Narzêdzie do analizy schematów i tworzenia plików DBIx::Class
 Group:		Development/Languages/Perl
 
 %description -n perl-SQL-Translator-DBIx-Class
 This package contains SQL::Translator (sqlfairy) parser for
-DBIx::Class::Schema objects and producer for DBIx::Class files
+DBIx::Class::Schema objects and producer for DBIx::Class files.
+
+%description -n perl-SQL-Translator-DBIx-Class -l pl
+Ten pakiet zawiera analizator SQL::Translator (sqlfairy) dla obiektów
+DBIx::Class::Schema oraz generator plików DBIx::Class.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
