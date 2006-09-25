@@ -23,13 +23,19 @@ BuildRequires:	perl-Class-Accessor-Chained
 BuildRequires:	perl-Class-C3 >= 0.11
 BuildRequires:	perl-Class-Data-Accessor >= 0.01
 BuildRequires:	perl-Class-Inspector
-BuildRequires:	perl-Data-Page >= 2.00
-BuildRequires:	perl-Data-UUID
+BuildRequires:	perl-Class-Trigger
+BuildRequires:	perl-DateTime
 BuildRequires:	perl-DBD-SQLite >= 1.11
 BuildRequires:	perl-DBI >= 1.40
+BuildRequires:	perl-DBIx-ContextualFetch
+BuildRequires:	perl-Data-Page >= 2.00
+BuildRequires:	perl-Data-UUID
 BuildRequires:	perl-Module-Find
+BuildRequires:	perl-PadWalker
 BuildRequires:	perl-SQL-Abstract >= 1.2
 BuildRequires:	perl-SQL-Abstract-Limit >= 0.11
+BuildRequires:	perl-SQL-Translator
+BuildRequires:	perl-Test-Memory-Cycle
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
