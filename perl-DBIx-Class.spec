@@ -19,6 +19,7 @@ BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl-Carp-Clan
+BuildRequires:	perl-Class-Accessor-Chained
 BuildRequires:	perl-Class-C3 >= 0.11
 BuildRequires:	perl-Class-Data-Accessor >= 0.01
 BuildRequires:	perl-Class-Inspector
