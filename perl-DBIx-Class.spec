@@ -6,7 +6,7 @@
 %define	pdir	DBIx
 %define	pnam	Class
 Summary:	DBIx::Class - Extensible and flexible object <-> relational mapper
-Summary(pl):	DBIx::Class - rozszerzalne i elastyczne wi±zanie obiektów <-> relacji
+Summary(pl.UTF-8):   DBIx::Class - rozszerzalne i elastyczne wiÄ…zanie obiektÃ³w <-> relacji
 Name:		perl-DBIx-Class
 Version:	0.07005
 Release:	1
@@ -56,30 +56,30 @@ database at your own risk! The API is *not* fixed yet, although most
 of the primitives should be good for the future and any API changes
 will be posted to the mailing list before they're committed.
 
-%description -l pl
-DBIx::Class to klasa odwzorowuj±ca SQL na OOP, zainspirowana
-szkieletem Class::DBI, maj±ca obs³ugiwaæ kompatibilno¶æ z nim, ale
-restrukturyzuj±c wnêtrzno¶ci i umo¿liwiaj±c obs³ugê niektórych nowych
-mo¿liwo¶ci, takie jak "self-join", "distinct", "group by" i inne.
+%description -l pl.UTF-8
+DBIx::Class to klasa odwzorowujÄ…ca SQL na OOP, zainspirowana
+szkieletem Class::DBI, majÄ…ca obsÅ‚ugiwaÄ‡ kompatibilnoÅ›Ä‡ z nim, ale
+restrukturyzujÄ…c wnÄ™trznoÅ›ci i umoÅ¼liwiajÄ…c obsÅ‚ugÄ™ niektÃ³rych nowych
+moÅ¼liwoÅ›ci, takie jak "self-join", "distinct", "group by" i inne.
 
-Ten modu³ jest aktualnie uwa¿any za EKSPERYMENTALNY - zbli¿aæ go do
-baz produkcyjnych mo¿na tylko na w³asne ryzyko! API nie zosta³o
-jeszcze ustalone, choæ wiêkszo¶æ prymitywów powinna byæ dobra na
-przysz³o¶æ i ka¿da zmiana API jest wysy³ana na listê dyskusyjn± przed
+Ten moduÅ‚ jest aktualnie uwaÅ¼any za EKSPERYMENTALNY - zbliÅ¼aÄ‡ go do
+baz produkcyjnych moÅ¼na tylko na wÅ‚asne ryzyko! API nie zostaÅ‚o
+jeszcze ustalone, choÄ‡ wiÄ™kszoÅ›Ä‡ prymitywÃ³w powinna byÄ‡ dobra na
+przyszÅ‚oÅ›Ä‡ i kaÅ¼da zmiana API jest wysyÅ‚ana na listÄ™ dyskusyjnÄ… przed
 zatwierdzeniem.
 
 %package -n perl-SQL-Translator-DBIx-Class
 Summary:	DBIx::Class schema parser and file producer
-Summary(pl):	Narzêdzie do analizy schematów i tworzenia plików DBIx::Class
+Summary(pl.UTF-8):   NarzÄ™dzie do analizy schematÃ³w i tworzenia plikÃ³w DBIx::Class
 Group:		Development/Languages/Perl
 
 %description -n perl-SQL-Translator-DBIx-Class
 This package contains SQL::Translator (sqlfairy) parser for
 DBIx::Class::Schema objects and producer for DBIx::Class files.
 
-%description -n perl-SQL-Translator-DBIx-Class -l pl
-Ten pakiet zawiera analizator SQL::Translator (sqlfairy) dla obiektów
-DBIx::Class::Schema oraz generator plików DBIx::Class.
+%description -n perl-SQL-Translator-DBIx-Class -l pl.UTF-8
+Ten pakiet zawiera analizator SQL::Translator (sqlfairy) dla obiektÃ³w
+DBIx::Class::Schema oraz generator plikÃ³w DBIx::Class.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
