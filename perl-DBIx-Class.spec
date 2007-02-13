@@ -6,7 +6,7 @@
 %define	pdir	DBIx
 %define	pnam	Class
 Summary:	DBIx::Class - Extensible and flexible object <-> relational mapper
-Summary(pl.UTF-8):   DBIx::Class - rozszerzalne i elastyczne wiązanie obiektów <-> relacji
+Summary(pl.UTF-8):	DBIx::Class - rozszerzalne i elastyczne wiązanie obiektów <-> relacji
 Name:		perl-DBIx-Class
 Version:	0.07005
 Release:	1
@@ -70,7 +70,7 @@ zatwierdzeniem.
 
 %package -n perl-SQL-Translator-DBIx-Class
 Summary:	DBIx::Class schema parser and file producer
-Summary(pl.UTF-8):   Narzędzie do analizy schematów i tworzenia plików DBIx::Class
+Summary(pl.UTF-8):	Narzędzie do analizy schematów i tworzenia plików DBIx::Class
 Group:		Development/Languages/Perl
 
 %description -n perl-SQL-Translator-DBIx-Class
