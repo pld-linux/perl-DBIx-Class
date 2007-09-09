@@ -8,35 +8,37 @@
 Summary:	DBIx::Class - Extensible and flexible object <-> relational mapper
 Summary(pl.UTF-8):	DBIx::Class - rozszerzalne i elastyczne wiązanie obiektów <-> relacji
 Name:		perl-DBIx-Class
-Version:	0.07005
+Version:	0.08007
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/DBIx/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	87146b4dc26006775a63c3f4ea637449
+# Source0-md5:	9b6ad555c463b4c3075413dce45f0b56
 URL:		http://search.cpan.org/dist/DBIx-Class/
 BuildRequires:	perl-Module-Build
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl-Carp-Clan
-BuildRequires:	perl-Class-Accessor-Chained
-BuildRequires:	perl-Class-C3 >= 0.11
+BuildRequires:	perl-Class-Accessor-Grouped >= 0.05002
+BuildRequires:	perl-Class-C3 >= 0.13
+BuildRequires:	perl-Class-C3-Componentised
 BuildRequires:	perl-Class-Data-Accessor >= 0.01
-BuildRequires:	perl-Class-Inspector
+BuildRequires:	perl-Class-Inspector >= 1.16
 BuildRequires:	perl-Class-Trigger
-BuildRequires:	perl-DateTime
-BuildRequires:	perl-DBD-SQLite >= 1.11
+BuildRequires:	perl-DBD-SQLite >= 1.13
 BuildRequires:	perl-DBI >= 1.40
 BuildRequires:	perl-DBIx-ContextualFetch
 BuildRequires:	perl-Data-Page >= 2.00
 BuildRequires:	perl-Data-UUID
+BuildRequires:	perl-DateTime
 BuildRequires:	perl-Module-Find
 BuildRequires:	perl-PadWalker >= 1.0
 BuildRequires:	perl-SQL-Abstract >= 1.2
 BuildRequires:	perl-SQL-Abstract-Limit >= 0.11
 BuildRequires:	perl-SQL-Translator
+BuildRequires:	perl-Scope-Guard >= 0.03
 BuildRequires:	perl-Test-Memory-Cycle
 %endif
 BuildArch:	noarch
@@ -87,17 +89,18 @@ DBIx::Class::Schema oraz generator plików DBIx::Class.
 %setup -q -n %{pdir}-%{pnam}-%{version}
 
 %build
-%{__perl} Build.PL \
-	installdirs=vendor \
-	destdir=$RPM_BUILD_ROOT
-./Build
+%{__perl} -MExtUtils::MakeMaker -e 'WriteMakefile(NAME=>"DBIx::Class")' \
+	INSTALLDIRS=vendor
+%{__make}
 
-%{?with_tests:./Build test}
+%{?with_tests:%{__make} test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-./Build install
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
 install -d $RPM_BUILD_ROOT%{perl_vendorlib}/DBIx/Class/Schema
 
 %clean
