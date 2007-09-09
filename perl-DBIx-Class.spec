@@ -16,7 +16,6 @@ Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/DBIx/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	9b6ad555c463b4c3075413dce45f0b56
 URL:		http://search.cpan.org/dist/DBIx-Class/
-BuildRequires:	perl-Module-Build
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
@@ -89,7 +88,7 @@ DBIx::Class::Schema oraz generator plików DBIx::Class.
 %setup -q -n %{pdir}-%{pnam}-%{version}
 
 %build
-%{__perl} -MExtUtils::MakeMaker -e 'WriteMakefile(NAME=>"DBIx::Class")' \
+%{__perl} -MExtUtils::MakeMaker -e 'WriteMakefile(NAME=>"DBIx::Class", EXE_FILES=>[<script/*>])' \
 	INSTALLDIRS=vendor
 %{__make}
 
@@ -108,11 +107,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changes README
+%doc Changes
 %attr(755,root,root) %{_bindir}/*
 %{perl_vendorlib}/DBIx/*.pm
 %{perl_vendorlib}/DBIx/Class
-%dir %{perl_vendorlib}/DBIx/Class/Schema
 %{_mandir}/man3/*
 %{_mandir}/man1/*
 
