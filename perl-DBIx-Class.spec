@@ -43,10 +43,10 @@ BuildRequires:	perl-Test-Memory-Cycle
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-# Only last of them is available in PLD. And if it was we would still
+# Only APR::UUID is available in PLD. And if it was we would still
 # need only one of Data::UUID, Data::Uniqid, APR::UUID or UUID at any
 # time to get full functionality
-%define 	_noautoreq	'perl(Data::Uniqid)' 'perl(UUID)' 'perl(APR::UUID)' 'perl(JSON)'
+%define 	_noautoreq	'perl(Data::Uniqid)' 'perl(UUID)' 'perl(APR::UUID)' 'perl(JSON)' 'perl(DBD::Multi)'
 
 %description
 DBIx::Class is a SQL to OOP mapper, inspired by the Class::DBI
