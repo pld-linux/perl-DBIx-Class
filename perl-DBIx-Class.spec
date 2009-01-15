@@ -21,6 +21,7 @@ BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl-Carp-Clan
 BuildRequires:	perl-Class-Accessor-Grouped >= 0.05002
+BuildRequires:	perl-Class-Accessor-Chained
 BuildRequires:	perl-Class-C3 >= 0.13
 BuildRequires:	perl-Class-C3-Componentised
 BuildRequires:	perl-Class-Data-Accessor >= 0.01
