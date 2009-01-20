@@ -8,8 +8,8 @@
 Summary:	DBIx::Class - Extensible and flexible object <-> relational mapper
 Summary(pl.UTF-8):	DBIx::Class - rozszerzalne i elastyczne wiązanie obiektów <-> relacji
 Name:		perl-DBIx-Class
-Version:	0.08010
-Release:	2
+Version:	0.08099_05
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
@@ -47,7 +47,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 # Only APR::UUID is available in PLD. And if it was we would still
 # need only one of Data::UUID, Data::Uniqid, APR::UUID or UUID at any
 # time to get full functionality
-%define 	_noautoreq	'perl(Data::Uniqid)' 'perl(UUID)' 'perl(APR::UUID)' 'perl(JSON)' 'perl(DBD::Multi)' 'perl(DBIC::SQL::Abstract)'
+%define 	_noautoreq	'perl(Data::Uniqid)' 'perl(UUID)' 'perl(APR::UUID)' 'perl(JSON)' 'perl(DBD::Multi)' 'perl(DBIC::SQL::Abstract)' 'perl(Moose)' 'perl(Moose::Role)' 'perl(MooseX::AttributeHelpers)'
 
 %description
 DBIx::Class is a SQL to OOP mapper, inspired by the Class::DBI
