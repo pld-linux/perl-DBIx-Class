@@ -8,38 +8,43 @@
 Summary:	DBIx::Class - Extensible and flexible object <-> relational mapper
 Summary(pl.UTF-8):	DBIx::Class - rozszerzalne i elastyczne wiązanie obiektów <-> relacji
 Name:		perl-DBIx-Class
-Version:	0.08012
-Release:	2
+Version:	0.08111
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/DBIx/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	8d8c526f812d6213a04c6644d52a44b1
+# Source0-md5:	cdca0d2d974d9c583a266375ee4ab941
 URL:		http://search.cpan.org/dist/DBIx-Class/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
-BuildRequires:	perl-Carp-Clan
-BuildRequires:	perl-Class-Accessor-Chained
-BuildRequires:	perl-Class-Accessor-Grouped >= 0.05002
-BuildRequires:	perl-Class-C3 >= 0.13
-BuildRequires:	perl-Class-C3-Componentised
-BuildRequires:	perl-Class-Data-Accessor >= 0.01
-BuildRequires:	perl-Class-Inspector >= 1.16
-BuildRequires:	perl-Class-Trigger
-BuildRequires:	perl-DBD-SQLite >= 1.13
-BuildRequires:	perl-DBI >= 1.40
-BuildRequires:	perl-DBIx-ContextualFetch
+BuildRequires:	perl-Carp-Clan >= 6.0
+BuildRequires:	perl-Class-Accessor-Grouped >= 0.09000
+BuildRequires:	perl-Class-C3-Componentised >= 1.0005
+BuildRequires:	perl-Class-Inspector >= 1.24
+BuildRequires:	perl-DBD-SQLite >= 1.25
+BuildRequires:	perl-DBI >= 1.605
+#BuildRequires:	perl-Class-Inspector >= 1.16
+#BuildRequires:	perl-Class-Trigger
+#BuildRequires:	perl-DBD-SQLite >= 1.13
+#BuildRequires:	perl-DBI >= 1.40
+#BuildRequires:	perl-DBIx-ContextualFetch
 BuildRequires:	perl-Data-Page >= 2.00
-BuildRequires:	perl-Data-UUID
-BuildRequires:	perl-DateTime
-BuildRequires:	perl-Module-Find
-BuildRequires:	perl-PadWalker >= 1.0
-BuildRequires:	perl-SQL-Abstract >= 1.2
-BuildRequires:	perl-SQL-Abstract-Limit >= 0.11
-BuildRequires:	perl-SQL-Translator
+BuildRequires:	perl-ExtUtils-MakeMaker >= 6.42
+BuildRequires:	perl-File-Temp >= 0.22
+BuildRequires:	perl-JSON-Any >= 1.18
+BuildRequires:	perl-MRO-Compat >= 0.09
+BuildRequires:	perl-Module-Find >= 0.06
+BuildRequires:	perl-Path-Class >= 0.16
+BuildRequires:	perl-SQL-Abstract >= 1.58
+BuildRequires:	perl-SQL-Abstract-Limit >= 0.13
 BuildRequires:	perl-Scope-Guard >= 0.03
-BuildRequires:	perl-Test-Memory-Cycle
+BuildRequires:	perl-Sub-Name >= 0.04
+BuildRequires:	perl-Test-Deep
+BuildRequires:	perl-Test-Exception
+BuildRequires:	perl-Test-Simple >= 0.92
+BuildRequires:	perl-Test-Warn >= 0.21
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
