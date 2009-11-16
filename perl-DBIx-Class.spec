@@ -8,12 +8,12 @@
 Summary:	DBIx::Class - Extensible and flexible object <-> relational mapper
 Summary(pl.UTF-8):	DBIx::Class - rozszerzalne i elastyczne wiązanie obiektów <-> relacji
 Name:		perl-DBIx-Class
-Version:	0.08112
+Version:	0.08114
 Release:	1
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/DBIx/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	bf4f4dd040c5f994606c33ee5fcdc9f6
+# Source0-md5:	8a53735173bf68a33f4f7f151e0ea513
 URL:		http://search.cpan.org/dist/DBIx-Class/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
@@ -24,6 +24,7 @@ BuildRequires:	perl-Class-C3-Componentised >= 1.0005
 BuildRequires:	perl-Class-Inspector >= 1.24
 BuildRequires:	perl-DBD-SQLite >= 1.25
 BuildRequires:	perl-DBI >= 1.605
+BuildRequires:	perl-Data-Dumper-Concise
 BuildRequires:	perl-Devel-Cycle >= 1.10
 BuildRequires:	perl-Test-Memory-Cycle
 BuildRequires:	perl-SQL-Translator >= 0.11002
