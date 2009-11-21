@@ -119,7 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorlib}/DBIx/*.pm
 %{perl_vendorlib}/DBIx/Class
 %{_mandir}/man3/DBIx*
-%{_mandir}/man1/
+%{_mandir}/man1/dbicadmin.*
 
 %files -n perl-SQL-Translator-DBIx-Class
 %defattr(644,root,root,755)
