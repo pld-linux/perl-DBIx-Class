@@ -8,42 +8,43 @@
 Summary:	DBIx::Class - Extensible and flexible object <-> relational mapper
 Summary(pl.UTF-8):	DBIx::Class - rozszerzalne i elastyczne wiązanie obiektów <-> relacji
 Name:		perl-DBIx-Class
-Version:	0.08114
-Release:	2
+Version:	0.08196
+Release:	1
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/DBIx/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	8a53735173bf68a33f4f7f151e0ea513
+# Source0-md5:	9170d4fe95665189ed020c39d7370ca2
 URL:		http://search.cpan.org/dist/DBIx-Class/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl-Carp-Clan >= 6.0
-BuildRequires:	perl-Class-Accessor-Grouped >= 0.09000
-BuildRequires:	perl-Class-C3-Componentised >= 1.0005
+BuildRequires:	perl-Class-Accessor-Grouped >= 0.10002
+BuildRequires:	perl-Class-C3-Componentised >= 1.0009
 BuildRequires:	perl-Class-Inspector >= 1.24
-BuildRequires:	perl-DBD-SQLite >= 1.25
+BuildRequires:	perl-DBD-SQLite >= 1.29
 BuildRequires:	perl-DBI >= 1.605
 BuildRequires:	perl-Data-Dumper-Concise
-BuildRequires:	perl-Devel-Cycle >= 1.10
-BuildRequires:	perl-Test-Memory-Cycle
-BuildRequires:	perl-SQL-Translator >= 0.11002
-BuildRequires:	perl-Text-CSV
 BuildRequires:	perl-Data-Page >= 2.00
+BuildRequires:	perl-Devel-Cycle >= 1.10
 BuildRequires:	perl-ExtUtils-MakeMaker >= 6.42
 BuildRequires:	perl-File-Temp >= 0.22
 BuildRequires:	perl-JSON-Any >= 1.18
 BuildRequires:	perl-MRO-Compat >= 0.09
 BuildRequires:	perl-Module-Find >= 0.06
 BuildRequires:	perl-Path-Class >= 0.16
-BuildRequires:	perl-SQL-Abstract >= 1.58
+BuildRequires:	perl-SQL-Abstract >= 1.72
 BuildRequires:	perl-SQL-Abstract-Limit >= 0.13
+# optional. not accessible atm
+#BuildRequires:	perl-SQL-Translator >= 0.11006
 BuildRequires:	perl-Scope-Guard >= 0.03
 BuildRequires:	perl-Sub-Name >= 0.04
 BuildRequires:	perl-Test-Deep
-BuildRequires:	perl-Test-Exception
+BuildRequires:	perl-Test-Exception >= 0.31
+BuildRequires:	perl-Test-Memory-Cycle
 BuildRequires:	perl-Test-Simple >= 0.92
 BuildRequires:	perl-Test-Warn >= 0.21
+BuildRequires:	perl-Text-CSV
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
