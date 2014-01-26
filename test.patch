@@ -1,0 +1,25 @@
+--- DBIx-Class-0.08250/t/resultset/update_delete.t.orig	2014-01-26 00:39:29.736905070 +0100
++++ DBIx-Class-0.08250/t/resultset/update_delete.t	2014-01-26 00:42:10.140237242 +0100
+@@ -122,21 +122,7 @@
+ is_same_sql_bind (
+   $sql,
+   \@bind,
+-  'UPDATE fourkeys
+-    SET read_count = read_count + 1
+-    WHERE (
+-      (foo, bar, hello, goodbye) IN (
+-        SELECT me.foo, me.bar, me.hello, me.goodbye
+-          FROM fourkeys me
+-          LEFT JOIN fourkeys_to_twokeys fourkeys_to_twokeys ON
+-                fourkeys_to_twokeys.f_bar = me.bar
+-            AND fourkeys_to_twokeys.f_foo = me.foo
+-            AND fourkeys_to_twokeys.f_goodbye = me.goodbye
+-            AND fourkeys_to_twokeys.f_hello = me.hello
+-        WHERE fourkeys_to_twokeys.pilot_sequence != ? AND ( bar = ? OR bar = ? ) AND ( foo = ? OR foo = ? ) AND ( goodbye = ? OR goodbye = ? ) AND ( hello = ? OR hello = ? ) AND sensors != ?
+-      )
+-    )
+-  ',
++  'UPDATE fourkeys SET read_count = read_count + 1 WHERE ( ( foo, bar, hello, goodbye ) IN ( (SELECT me.foo, me.bar, me.hello, me.goodbye FROM fourkeys me LEFT JOIN fourkeys_to_twokeys fourkeys_to_twokeys ON fourkeys_to_twokeys.f_bar = me.bar AND fourkeys_to_twokeys.f_foo = me.foo AND fourkeys_to_twokeys.f_goodbye = me.goodbye AND fourkeys_to_twokeys.f_hello = me.hello WHERE ( ( fourkeys_to_twokeys.pilot_sequence != ? AND ( ( bar = ? OR bar = ? ) AND ( foo = ? OR foo = ? ) AND ( goodbye = ? OR goodbye = ? ) AND ( hello = ? OR hello = ? ) AND sensors != ? ) ) )) ) )',
+   [
+     "'666'",
+     ("'1'", "'2'") x 4,

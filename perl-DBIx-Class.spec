@@ -8,35 +8,40 @@
 Summary:	DBIx::Class - Extensible and flexible object <-> relational mapper
 Summary(pl.UTF-8):	DBIx::Class - rozszerzalne i elastyczne wiązanie obiektów <-> relacji
 Name:		perl-DBIx-Class
-Version:	0.08196
+Version:	0.08250
 Release:	1
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/DBIx/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	9170d4fe95665189ed020c39d7370ca2
+# Source0-md5:	4f65022a3d9480f3bb0610580dfdaf56
+Patch0:		test.patch
 URL:		http://search.cpan.org/dist/DBIx-Class/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl-Carp-Clan >= 6.0
-BuildRequires:	perl-Class-Accessor-Grouped >= 0.10002
+BuildRequires:	perl-Class-Accessor-Grouped >= 0.10010
 BuildRequires:	perl-Class-C3-Componentised >= 1.0009
 BuildRequires:	perl-Class-Inspector >= 1.24
+BuildRequires:	perl-Context-Preserve
+BuildRequires:	perl-Config-Any >= 0.20
 BuildRequires:	perl-DBD-SQLite >= 1.29
 BuildRequires:	perl-DBI >= 1.605
-BuildRequires:	perl-Data-Dumper-Concise
+BuildRequires:	perl-Data-Compare >= 1.22
+BuildRequires:	perl-Data-Dumper-Concise >= 2.020
 BuildRequires:	perl-Data-Page >= 2.00
 BuildRequires:	perl-Devel-Cycle >= 1.10
+BuildRequires:	perl-Devel-GlobalDestruction
 BuildRequires:	perl-ExtUtils-MakeMaker >= 6.42
 BuildRequires:	perl-File-Temp >= 0.22
 BuildRequires:	perl-JSON-Any >= 1.18
 BuildRequires:	perl-MRO-Compat >= 0.09
 BuildRequires:	perl-Module-Find >= 0.06
+BuildRequires:	perl-Moo >= 1.004002
 BuildRequires:	perl-Path-Class >= 0.16
-BuildRequires:	perl-SQL-Abstract >= 1.72
+BuildRequires:	perl-SQL-Abstract >= 1.73
 BuildRequires:	perl-SQL-Abstract-Limit >= 0.13
-# optional. not accessible atm
-#BuildRequires:	perl-SQL-Translator >= 0.11006
+BuildRequires:	perl-SQL-Translator >= 0.11006
 BuildRequires:	perl-Scope-Guard >= 0.03
 BuildRequires:	perl-Sub-Name >= 0.04
 BuildRequires:	perl-Test-Deep
@@ -45,6 +50,7 @@ BuildRequires:	perl-Test-Memory-Cycle
 BuildRequires:	perl-Test-Simple >= 0.92
 BuildRequires:	perl-Test-Warn >= 0.21
 BuildRequires:	perl-Text-CSV
+BuildRequires:	perl-namespace-clean
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -52,7 +58,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 # Only APR::UUID is available in PLD. And if it was we would still
 # need only one of Data::UUID, Data::Uniqid, APR::UUID or UUID at any
 # time to get full functionality
-%define 	_noautoreq	'perl(Data::Uniqid)' 'perl(UUID)' 'perl(APR::UUID)' 'perl(JSON)' 'perl(DBD::Multi)' 'perl(DBIC::SQL::Abstract)'
+%define		_noautoreq_perl	Data::Uniqid UUID APR::UUID JSON DBD::Multi DBIC::SQL::Abstract
 
 %description
 DBIx::Class is a SQL to OOP mapper, inspired by the Class::DBI
@@ -92,12 +98,13 @@ DBIx::Class::Schema oraz generator plików DBIx::Class.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
+%patch0 -p1
 
-# SQL::Translator is FUBAR
-mv t/94versioning.t{,.fubar}
+# requires installed DBIx::Class of same version
+%{__mv} t/storage/dbic_pretty.t{,.disabled}
 
 %build
-%{__perl} -MExtUtils::MakeMaker -e 'WriteMakefile(NAME=>"DBIx::Class", EXE_FILES=>[<script/*>])' \
+%{__perl} Makefile.PL \
 	INSTALLDIRS=vendor
 %{__make}
 
