@@ -97,7 +97,7 @@ DBIx::Class::Schema oraz generator plików DBIx::Class.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 # requires installed DBIx::Class of same version
 %{__mv} t/storage/dbic_pretty.t{,.disabled}
