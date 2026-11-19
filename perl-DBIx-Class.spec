@@ -7,50 +7,52 @@
 Summary:	DBIx::Class - Extensible and flexible object <-> relational mapper
 Summary(pl.UTF-8):	DBIx::Class - rozszerzalne i elastyczne wiązanie obiektów <-> relacji
 Name:		perl-DBIx-Class
-Version:	0.08250
-Release:	2
+Version:	0.082844
+Release:	1
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/DBIx/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	4f65022a3d9480f3bb0610580dfdaf56
-Patch0:		test.patch
+Source0:	https://www.cpan.org/authors/id/R/RI/RIBASUSHI/%{pdir}-%{pnam}-%{version}.tar.gz
+# Source0-md5:	a2b5b4109b893cc731019b89eeb48c0f
 URL:		http://search.cpan.org/dist/DBIx-Class/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
-BuildRequires:	perl-Carp-Clan >= 6.0
-BuildRequires:	perl-Class-Accessor-Grouped >= 0.10010
+BuildRequires:	perl-Class-Accessor-Grouped >= 0.10012
 BuildRequires:	perl-Class-C3-Componentised >= 1.0009
 BuildRequires:	perl-Class-Inspector >= 1.24
 BuildRequires:	perl-Context-Preserve
 BuildRequires:	perl-Config-Any >= 0.20
 BuildRequires:	perl-DBD-SQLite >= 1.29
 BuildRequires:	perl-DBI >= 1.605
-BuildRequires:	perl-Data-Compare >= 1.22
 BuildRequires:	perl-Data-Dumper-Concise >= 2.020
-BuildRequires:	perl-Data-Page >= 2.00
-BuildRequires:	perl-Devel-Cycle >= 1.10
-BuildRequires:	perl-Devel-GlobalDestruction
+BuildRequires:	perl-Devel-GlobalDestruction >= 0.09
+BuildRequires:	perl-Hash-Merge >= 0.12
 BuildRequires:	perl-ExtUtils-MakeMaker >= 6.42
 BuildRequires:	perl-File-Temp >= 0.22
 BuildRequires:	perl-JSON-Any >= 1.18
-BuildRequires:	perl-MRO-Compat >= 0.09
-BuildRequires:	perl-Module-Find >= 0.06
-BuildRequires:	perl-Moo >= 1.004002
-BuildRequires:	perl-Path-Class >= 0.16
-BuildRequires:	perl-SQL-Abstract >= 1.73
-BuildRequires:	perl-SQL-Abstract-Limit >= 0.13
+BuildRequires:	perl-MRO-Compat >= 0.12
+BuildRequires:	perl-Module-Find >= 0.07
+BuildRequires:	perl-Moo >= 2.000
+BuildRequires:	perl-Package-Stash >= 0.28
+BuildRequires:	perl-Path-Class >= 0.18
+BuildRequires:	perl-SQL-Abstract-Classic >= 1.91
 BuildRequires:	perl-SQL-Translator >= 0.11006
+BuildRequires:	perl-Package-Stash >= 0.28
 BuildRequires:	perl-Scope-Guard >= 0.03
 BuildRequires:	perl-Sub-Name >= 0.04
-BuildRequires:	perl-Test-Deep
+BuildRequires:	perl-Test-Deep >= 0.101
 BuildRequires:	perl-Test-Exception >= 0.31
-BuildRequires:	perl-Test-Memory-Cycle
-BuildRequires:	perl-Test-Simple >= 0.92
+BuildRequires:	perl-Test-Simple >= 0.94
 BuildRequires:	perl-Test-Warn >= 0.21
-BuildRequires:	perl-Text-CSV
-BuildRequires:	perl-namespace-clean
+BuildRequires:	perl-Try-Tiny >= 0.07
+BuildRequires:	perl-namespace-clean >= 0.24
+BuildRequires:	perl(Text::Balanced) >= 2.00
 %endif
+Requires:	perl-Class-Accessor-Grouped >= 0.10012
+Requires:	perl-Hash-Merge >= 0.12
+Requires:	perl-SQL-Abstract-Classic >= 1.91
+Requires:	perl-Try-Tiny >= 0.07
+Requires:	perl(Text::Balanced) >= 2.00
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -97,11 +99,6 @@ DBIx::Class::Schema oraz generator plików DBIx::Class.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
-%patch -P0 -p1
-
-# requires installed DBIx::Class of same version
-%{__mv} t/storage/dbic_pretty.t{,.disabled}
-
 %build
 %{__perl} Makefile.PL \
 	INSTALLDIRS=vendor
@@ -115,6 +112,8 @@ install -d $RPM_BUILD_ROOT%{perl_vendorlib}/DBIx/Class/{Schema,ResultSet}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%{__sed} -i -e '1s,^#!.*perl,#!%{__perl},' $RPM_BUILD_ROOT%{_bindir}/dbicadmin
 
 %clean
 rm -rf $RPM_BUILD_ROOT
